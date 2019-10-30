@@ -1,20 +1,22 @@
 const tamanhoMaximo = 10;
 
 class Pessoa{
-    private _nome: string;
-
-    get nome(): string{
-        return this._nome;
-    }
-
-    set nome(novoNome: string){
-        if(novoNome && novoNome.length > tamanhoMaximo){
-            throw new Error("o nome deve ter até " +tamanhoMaximo +" caracteres");
-        }
-        this._nome = novoNome;
+    nome: string;
+    nascimento: Date;
+    constructor(nome: string, nascimento: Date){
+        this.nome = nome;
+        this.nascimento = nascimento;
     }
 }
 
-let pessoa = new Pessoa();
-pessoa.nome = "Marco Polooooooooooo";
-console.log(pessoa.nome);
+class Estudante extends Pessoa {
+    matricula: any;
+    constructor(nome: string, nascimento:Date, matricula:any){
+        super(nome, nascimento);
+        this.matricula = matricula;
+    }
+}
+
+let e = new Estudante("Sandy", new Date("04/15/2014"), "123-A");
+let dataFormatada = e.nascimento.toLocaleDateString();
+console.log(e.nome + " " +dataFormatada);
