@@ -1,7 +1,20 @@
-let sum = (x: number, y: number): number => {
-    return x + y;
+const tamanhoMaximo = 10;
+
+class Pessoa{
+    private _nome: string;
+
+    get nome(): string{
+        return this._nome;
+    }
+
+    set nome(novoNome: string){
+        if(novoNome && novoNome.length > tamanhoMaximo){
+            throw new Error("o nome deve ter até " +tamanhoMaximo +" caracteres");
+        }
+        this._nome = novoNome;
+    }
 }
 
-let soma = sum(2,3);
-
-console.log(soma);
+let pessoa = new Pessoa();
+pessoa.nome = "Marco Polooooooooooo";
+console.log(pessoa.nome);
