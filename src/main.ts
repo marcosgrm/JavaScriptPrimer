@@ -1,22 +1,12 @@
-const tamanhoMaximo = 10;
-
-class Pessoa{
-    nome: string;
-    nascimento: Date;
-    constructor(nome: string, nascimento: Date){
-        this.nome = nome;
-        this.nascimento = nascimento;
+abstract class Animal {
+    abstract fazBarulho(): void;
+    move(): void {
+        console.log("lentamente...");
     }
 }
 
-class Estudante extends Pessoa {
-    matricula: any;
-    constructor(nome: string, nascimento:Date, matricula:any){
-        super(nome, nascimento);
-        this.matricula = matricula;
-    }
+class Cachorro extends Animal{
+fazBarulho(): void{
+    console.log("au");
 }
-
-let e = new Estudante("Sandy", new Date("04/15/2014"), "123-A");
-let dataFormatada = e.nascimento.toLocaleDateString();
-console.log(e.nome + " " +dataFormatada);
+}
